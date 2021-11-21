@@ -19,6 +19,7 @@ Who Ara You Ghosts?
 * toc
 {:toc}
 
+---
 
 # Skill
 Test
