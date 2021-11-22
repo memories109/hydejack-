@@ -1,8 +1,12 @@
-# Hydejack Starter Kit
+# Hydejack Profile Custome 
 
-A quicker, cleaner way to get started blogging with [Hydejack](https://hydejack.com/).
+Tutorial Profile Custome 
+Base Jekyll Desgine Hydejack Use
+with [Hydejack](https://hydejack.com/).
 
-## Quick Start
+# 처음 시작은 포트폴리오 제작 목적으로 구현하였지만 하루하루 데일리 이력을 작성 
+
+## Hydejack 사용법
 ### Running locally
 1. Clone repository (git users), or [download] and unzip.
 2. Open terminal, `cd` into root directory (where `_config.yml` is located)
@@ -18,3 +22,5 @@ A quicker, cleaner way to get started blogging with [Hydejack](https://hydejack.
 [^1]: Requires Bundler. Install with `gem install bundler`.
 
 [download]: https://github.com/hydecorp/hydejack-starter-kit/archive/master.zip
+
+## Build Test git
