@@ -51,20 +51,11 @@ author:
 
 # Add links to the sidebar.
 menu:
-<<<<<<< HEAD
   - title: Blog
     url:   /blog/
   - title: Projects
     url:   /projects/
   
-=======
->>>>>>> main
-  - title: About
-    url:   /about/
-  - title: Projects
-    url:   /projects/
-  - title: Blog
-    url:   /blog/
   
   
 
