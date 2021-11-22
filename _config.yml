@@ -31,6 +31,8 @@ description:           >
 # A shorter description for the sidebar.
 tagline:               Web Developer  
 
+url: https://memories109.github.io/profile/
+
 # A list of keywords for your blog
 keywords:              []
 
@@ -49,14 +51,14 @@ author:
 
 # Add links to the sidebar.
 menu:
-  - title: Blog
-    url:   /blog/
-  - title: Projects
-    url:   /projects/
-  - title: Resume
-    url:   /resume/
   - title: About
     url:   /about/
+  - title: Projects
+    url:   /projects/
+  - title: Blog
+    url:   /blog/
+  
+  
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
@@ -138,10 +140,10 @@ defaults:
       sitemap:         false
 
   # # You can use the following to enable comments on all posts.
-  # - scope:
-  #     type:            posts
-  #   values:
-  #     comments:        true
+  - scope:
+      type:            posts
+    values:
+      comments:        true
 
   # `jekyll-seo-tag` will mark collection outputs as `BlogPosting`,
   # but we want them to be `WebPage`s:
@@ -425,29 +427,3 @@ jekyll_compose:
           url: https://example.com
 
 
-# Set which comment system to use
-comments:
-  # 'disqus' or 'utterances' are available
-  provider:            utterances
-
-# You must install utterances github app before use.(https://github.com/apps/utterances)
-# Make sure all variables are set properly. Check below link for detail.
-# https://utteranc.es/
-utterances:
-  repo:                "LazyRen/LazyRen.github.io"
-  issue-term:          "pathname"
-  label:               "Comments"
-  theme:               "dark-blue"
-
-# You must install giscus github app before use.(https://github.com/apps/giscus)
-# Make sure all variables are set properly. Check below link for detail.
-# https://giscus.vercel.app/
-giscus:
-  repo:                "LazyRen/LazyRen.github.io"
-  repo-id:             "[your-repo-id]"
-  category:            "Comments"
-  category-id:         "[your-category-id]"
-  mapping:             "pathname"
-  reaction-enabled:    "1"
-  theme:               "dark_dimmed"
-  crossorigin:         "anonymous"
