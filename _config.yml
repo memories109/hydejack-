@@ -53,8 +53,7 @@ menu:
     url:   /blog/
   - title: Projects
     url:   /projects/
-  - title: Resume
-    url:   /resume/
+  
   - title: About
     url:   /about/
 
