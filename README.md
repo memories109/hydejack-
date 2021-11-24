@@ -3,9 +3,6 @@
 Tutorial Profile Custome 
 Base Jekyll Desgine Hydejack Use
 with [Hydejack](https://hydejack.com/).
-
-# 처음 시작은 포트폴리오 제작 목적으로 구현하였지만 하루하루 데일리 이력을 작성 
-
 ## Hydejack 사용법
 ### Running locally
 1. Clone repository (git users), or [download] and unzip.
