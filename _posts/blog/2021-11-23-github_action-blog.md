@@ -15,5 +15,6 @@ mermaid: true
 속도측면이나 기존 GitHub 관리하는 입장에서 AccessTokene등록후 간단한 Workflows작성시 Git Push 이후에 자동 배포가 무척간편해 졌다
 
 ## GitHub Action 설정방법
+[![gitAction](/assets/customer/gitaction.png)]
 
-
+[![gitAction](/assets/customer/gitaction2.png)]
