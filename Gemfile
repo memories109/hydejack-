@@ -47,5 +47,5 @@ group :jekyll_plugins do
   gem "jekyll-compose"
 end
 
-gem 'wdm' if Gem.win_platform?
+gem 'wdm', '~> 0.1.1', :install_if => Gem.win_platform?
 gem "tzinfo-data" if Gem.win_platform?
