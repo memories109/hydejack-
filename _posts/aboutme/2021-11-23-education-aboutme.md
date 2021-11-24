@@ -1,6 +1,6 @@
 ---
-title:  "Study"
-excerpt: "Study"
+title:  "Education"
+excerpt: "Education"
 
 categories:
   - aboutme
