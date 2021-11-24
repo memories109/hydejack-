@@ -1,9 +1,7 @@
 ---
 title:  "About - Educations"
 excerpt: "Educations"
-
-categories:
-  - aboutme
+categories: [About, Educations]
 tags: [springboot, webrtc, jwt, redis, docker, nginx, mysql]
 last_modified_at: 2021-11-23T09:21:00-22:00
 ---

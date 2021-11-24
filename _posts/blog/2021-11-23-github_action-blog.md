@@ -2,7 +2,7 @@
 title:  "Blog - GitHub Action 자동화 배포"
 excerpt: "Github Action"
 
-categories: [Project]
+categories: [Blog, Git]
 tags: [springboot, webrtc, jwt, redis, docker, nginx, mysql]
 mermaid: true
 ---

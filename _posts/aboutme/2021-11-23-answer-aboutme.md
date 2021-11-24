@@ -2,8 +2,7 @@
 title:  "About Me"
 excerpt: "Who are you"
 
-categories:
-  - about
+categories: [About, Aboutme]
 tags:
   - about
 last_modified_at: 2021-11-23T07:21:00-22:00
