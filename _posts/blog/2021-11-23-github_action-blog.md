@@ -2,11 +2,9 @@
 title:  "GitHub Action 자동화 배포"
 excerpt: "Github Action"
 
-categories:
-  - Blog
-tags:
-  - Blog
-last_modified_at: 2021-11-22T08:21:00-22:00
+categories: [Project]
+tags: [springboot, webrtc, jwt, redis, docker, nginx, mysql]
+mermaid: true
 ---
 
 
