@@ -51,11 +51,7 @@ author:
 
 # Add links to the sidebar.
 menu:
-<<<<<<< HEAD
   - title: AboutMe
-=======
-  - title: About
->>>>>>> 55b1b8597a6a558e352714ae67c34914b95923c1
     url:   /aboutme/
   - title: Blog
     url:   /blog/
