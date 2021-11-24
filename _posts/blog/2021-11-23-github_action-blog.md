@@ -18,3 +18,5 @@ mermaid: true
 [![gitAction](/assets/customer/gitaction.png)]
 
 [![gitAction](/assets/customer/gitaction2.png)]
+
+[![gitAction](/assets/customer/blog4.png)]
