@@ -3,9 +3,9 @@ title:  "About Me"
 excerpt: "Who are you"
 
 categories:
-  - aboutme
+  - about
 tags:
-  - aboutme
+  - about
 last_modified_at: 2021-11-23T07:21:00-22:00
 ---
 

@@ -1,5 +1,5 @@
 ---
-title:  "jekyll Travis CI 배포 자동화"
+title:  "Blog - jekyll Travis CI 배포 자동화"
 excerpt: "jekyll Travis CI 배포 자동화(1)"
 
 categories:

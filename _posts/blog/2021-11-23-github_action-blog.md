@@ -1,5 +1,5 @@
 ---
-title:  "GitHub Action 자동화 배포"
+title:  "Blog - GitHub Action 자동화 배포"
 excerpt: "Github Action"
 
 categories: [Project]

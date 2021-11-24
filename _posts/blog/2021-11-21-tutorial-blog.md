@@ -1,5 +1,5 @@
 ---
-title:  "github.io 포트폴리오 제작하기"
+title:  "Blog - github.io 포트폴리오 제작하기"
 excerpt: "GitHub Blog 서비스인 github.io 블로그 시작"
 
 categories:

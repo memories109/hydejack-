@@ -51,8 +51,8 @@ author:
 
 # Add links to the sidebar.
 menu:
-  - title: AboutMe
-    url:   /aboutme/
+  - title: About
+    url:   /about/
   - title: Blog
     url:   /blog/
   - title: Projects
@@ -456,3 +456,12 @@ giscus:
   reaction-enabled:    "1"
   theme:               "dark_dimmed"
   crossorigin:         "anonymous"
+
+  jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
