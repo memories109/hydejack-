@@ -11,7 +11,7 @@ last_modified_at: 2021-11-23T07:21:00-22:00
 
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-# _Introduction_
+# 🤔 _Introduction_
 * 안녕하세요 !! 프론트 엔드 개발자 Ghosts 입니다. 
 
 # Contact & Channel
@@ -20,26 +20,22 @@ last_modified_at: 2021-11-23T07:21:00-22:00
 
 # _Skill_
 ## BackEnd
- - Java
- - PHP
- - Javascript
- - RestAPI
- - MongoDB
+ - Java, PHP
+ - Spring Boot, Spring MVC, Spring Batch, Spring Data JPA
+ - Rest API, Hibernate
+ - Eclipse, Visual Studio Code
 ## DevOps
- - MySQL, MariaDB, Oracle
- - Jenkins
+ - MySQL, MariaDB, Oracle, MongoDB
+ - Jenkins, TravisCI
  - Nginx, Tomcat
  - Github
- - AWS
- - SSH
+ 
 ## FrontEnd
  - HTML5
  - CSS3(SCSS)
- - Ajax
+ - Jquery
  - npm
- - yarn
- - Jekyll
- - WordPress
+ - Jekyll, WordPress
 ## Collaboration
  - RedMine & Wiki Confluence
 
