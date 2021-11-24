@@ -457,3 +457,11 @@ giscus:
   theme:               "dark_dimmed"
   crossorigin:         "anonymous"
 
+  jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
