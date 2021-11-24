@@ -15,8 +15,12 @@ mermaid: true
 속도측면이나 기존 GitHub 관리하는 입장에서 AccessTokene등록후 간단한 Workflows작성시 Git Push 이후에 자동 배포가 무척간편해 졌다
 
 ## GitHub Action 설정방법
-[![gitAction](/assets/customer/gitaction.png)]
+ - 기본 설정 방법
+![gitAction](/assets/customer/gitaction.png)
+Github Action의 메뉴 구성들이다. Jekyll Workflow를 사용하기 설치 해준다. 
 
-[![gitAction](/assets/customer/gitaction2.png)]
+![gitAction](/assets/customer/gitaction2.png)
+- 코드 
+![gitAction](/assets/customer/blog4.png)
 
-[![gitAction](/assets/customer/blog4.png)]
+- 빌드 과정
