@@ -16,11 +16,12 @@ mermaid: true
 
 ## GitHub Action 설정방법
  - 기본 설정 방법
-![gitAction](/assets/customer/gitaction.png)
+![gitAction](/assets/img/customer/gitaction.png)
+
 Github Action의 메뉴 구성들이다. Jekyll Workflow를 사용하기 설치 해준다. 
 
-![gitAction](/assets/customer/gitaction2.png)
+![gitAction](/assets/img/customer/gitaction2.png)
 - 코드 
-![gitAction](/assets/customer/blog4.png)
+![gitAction](/assets/img/customer/blog4.png)
 
 - 빌드 과정
