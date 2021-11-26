@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://memories109.github.io/profile//feed.xml" rel="self" type="application/atom+xml" /><link href="https://memories109.github.io/profile//" rel="alternate" type="text/html" hreflang="en" /><updated>2021-11-26T00:52:07+00:00</updated><id>https://memories109.github.io/profile//feed.xml</id><title type="html">GhostsDev</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><entry><title type="html">@Scheduled는 Spring 3.1 이상부터 지원합니다.</title><link href="https://memories109.github.io/profile//blog/spring/2021-11-24-springschedul.html/" rel="alternate" type="text/html" title="@Scheduled는 Spring 3.1 이상부터 지원합니다." /><published>2021-11-24T00:00:00+00:00</published><updated>2021-11-21T16:07:00+00:00</updated><id>https://memories109.github.io/profile//blog/spring/springschedul</id><content type="html" xml:base="https://memories109.github.io/profile//blog/spring/2021-11-24-springschedul.html/">&lt;p&gt;1.Annotation 사용 방법
+2.XML 사용 방법&lt;/p&gt;
+
+&lt;p&gt;이 글에서는 1.Annotation 사용 방법만 다루고 있습니다. 참고 바랍니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;annotation-설정&quot;&gt;Annotation 설정&lt;/h1&gt;
+
+&lt;p&gt;@Scheduled&lt;/p&gt;
+
+&lt;p&gt;개념&lt;/p&gt;
+
+&lt;p&gt;주기적인 작업이 있을 때 @Scheduled 애노테이션을 사용하면 쉽게 적용할 수 있다.
+Linux를 조금 배우신 분들이라면 Linux의 crontab이라고 생각하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;사용 이유
+특정시간 혹은 몇분 혹은 몇시간마다 동작해는 스케쥴러를 구현
+주기적인 작업이 필요 할 때&lt;/p&gt;
+
+&lt;p&gt;문법
+먼저 새로운 기술은 항상 그렇듯 XML 설정을 해줘야 한다.
+새로운 XML를 만들거나 기존에 쓰던 XML에 다음과 같은 문구를 추가 한다.&lt;/p&gt;
+
+&lt;p&gt;1.새로운 XML를 만들어 추가하는 방법&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;beans&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.springframework.org/schema/beans&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;xmlns:task=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.springframework.org/schema/task&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;xsi:schemalocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;task:annotation-driven&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/task:annotation-driven&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/beans&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2.기존 XML에 추가하는 방법&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xmlns:task=&quot;http://www.springframework.org/schema/task&quot;
+ xsi:schemalocation=&quot;
+ http://www.springframework.org/schema/task
+ http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;&amp;gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;task:annotation-driven&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/task:annotation-driven&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;사용&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;예시&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Scheduled&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fixedDelay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testScheduler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;스케줄링 테스트&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="Blog" /><category term="Spring" /><category term="Blog" /><summary type="html">1.Annotation 사용 방법 2.XML 사용 방법 이 글에서는 1.Annotation 사용 방법만 다루고 있습니다. 참고 바랍니다. Annotation 설정 @Scheduled 개념 주기적인 작업이 있을 때 @Scheduled 애노테이션을 사용하면 쉽게 적용할 수 있다. Linux를 조금 배우신 분들이라면 Linux의 crontab이라고 생각하면 됩니다. 사용 이유 특정시간 혹은 몇분 혹은 몇시간마다 동작해는 스케쥴러를 구현 주기적인 작업이 필요 할 때 문법 먼저 새로운 기술은 항상 그렇듯 XML 설정을 해줘야 한다. 새로운 XML를 만들거나 기존에 쓰던 XML에 다음과 같은 문구를 추가 한다. 1.새로운 XML를 만들어 추가하는 방법 &amp;lt;!--?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?--&amp;gt; &amp;lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:task=&quot;http://www.springframework.org/schema/task&quot; xsi:schemalocation=&quot; http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;&amp;gt; &amp;lt;task:annotation-driven&amp;gt; &amp;lt;/task:annotation-driven&amp;gt; &amp;lt;/beans&amp;gt; 2.기존 XML에 추가하는 방법 xmlns:task=&quot;http://www.springframework.org/schema/task&quot; xsi:schemalocation=&quot; http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;&amp;gt; &amp;lt;task:annotation-driven&amp;gt; &amp;lt;/task:annotation-driven&amp;gt; 사용 예시 @Scheduled(fixedDelay=1000) public void testScheduler(){ System.out.println(&quot;스케줄링 테스트&quot;); }</summary></entry><entry><title type="html">Blog - Socket 통신 개념잡기</title><link href="https://memories109.github.io/profile//blog/socket/2021-11-24-soket.html/" rel="alternate" type="text/html" title="Blog - Socket 통신 개념잡기" /><published>2021-11-24T00:00:00+00:00</published><updated>2021-11-21T16:07:00+00:00</updated><id>https://memories109.github.io/profile//blog/socket/soket</id><content type="html" xml:base="https://memories109.github.io/profile//blog/socket/2021-11-24-soket.html/"></content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="Blog" /><category term="Socket" /><category term="Blog" /><summary type="html"></summary></entry><entry><title type="html">REST의 정의</title><link href="https://memories109.github.io/profile//blog/rest/2021-11-24-rest.html/" rel="alternate" type="text/html" title="REST의 정의" /><published>2021-11-24T00:00:00+00:00</published><updated>2021-11-21T16:07:00+00:00</updated><id>https://memories109.github.io/profile//blog/rest/rest</id><content type="html" xml:base="https://memories109.github.io/profile//blog/rest/2021-11-24-rest.html/">&lt;ul&gt;
+  &lt;li&gt;REpresentational State Transfer의 약자로, 
+자원의 이름으로 구분하여 정보를 주고 받을수 있는 모든것을 의미 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;REST는 HTTP 프로토콜을 이용하기 때문에 웹의 장점을 최대한 활용이 가능한 아키텍처이다 
+REST는 네트워크 상에서 Client 와 Server 사이의 통신 방식중 하나이다.&lt;/p&gt;
+
+&lt;h1 id=&quot;rest의-개념&quot;&gt;REST의 개념&lt;/h1&gt;
+&lt;p&gt;자원에 대해서 CRUD(Create, Read, Update, Delete)연산을 수행하기 위한 URI(Resource)로 
+GET, POST 방식을 사용하여 요청을 보낸다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;URI 와 URL의 차이점?
+  URL은 Uniform Resource Locator로 인터넷 상의 자원의 위치를 의미한다. 
+  URI는 Uniform Resource Identifier로 인터넷 상의 자원을 식별하기 위한 문자열의 구성이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;rest의-구성요소&quot;&gt;REST의 구성요소&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;자원(Resource) -URI
+    &lt;blockquote&gt;
+      &lt;p&gt;자원에는 고유한 ID가 존재하고, 이 자원은 Serve에 존재한다.
+자원을 구별하는 ID는 ‘/exgroups/:exgroup_id’와 같은 HTTP URI 이다.
+Client는 URI를 이용해 자원을 지정하고 해당자원의 상태에 대해 Server에 요청한다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;행위(Verb) - Method
+ ```html
+HTTP 프로토콜의 Method를 사용
+HTTP 프로토콜은 GET, POST, PUT, PATCH, DELETE의 Method를 제공한다. (CRUD)&lt;/p&gt;
+
+    &lt;p&gt;GET - Read : 정보 요청
+ POIST - Create : 정보 입력
+ PUT - Update : 정보 업데이트 (데이터 전체를 변경)
+ PATCH - Update : 정보 업데이트 (데이터 일부만 변경) 
+ DELETE - Delete : 정보 삭제&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;표현 (Representation of Resource)
+    &lt;blockquote&gt;
+      &lt;p&gt;Client의 Server가 데이터를 주고 받는 형태로 JSON, XML, TEXT, RSS 등이 있다.
+JSON, XML를 통해 데이터를 주고 받는것이 일반적&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;rest-api란&quot;&gt;REST API란?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;API(Application Programming Interface)란?
+    &lt;blockquote&gt;
+      &lt;p&gt;API는 응용 프로그램에서 사용할 수 있도록 , 운영체제나 프로그래밍 언어가 제공하는 기능을 제어할 수 있도록 만든 인터페이스 이다.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;REST API의 정의
+    &lt;blockquote&gt;
+      &lt;p&gt;REST의 특징을 기반으로 서비스 API를 구현&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;rest-api-와-restful-api의-차이점&quot;&gt;REST API 와 RESTful API의 차이점&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;RESTful은 REST의 설계 규칙을 잘 지켜서 설계된 API를 RESTful한 API라고 한다. 
+ 즉, REST의 원리를 잘 따르는 시스템을 RESTful이란 용어로 지칭&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="Blog" /><category term="REST" /><category term="Blog" /><summary type="html">REpresentational State Transfer의 약자로, 자원의 이름으로 구분하여 정보를 주고 받을수 있는 모든것을 의미 한다. REST는 HTTP 프로토콜을 이용하기 때문에 웹의 장점을 최대한 활용이 가능한 아키텍처이다 REST는 네트워크 상에서 Client 와 Server 사이의 통신 방식중 하나이다. REST의 개념 자원에 대해서 CRUD(Create, Read, Update, Delete)연산을 수행하기 위한 URI(Resource)로 GET, POST 방식을 사용하여 요청을 보낸다. URI 와 URL의 차이점? URL은 Uniform Resource Locator로 인터넷 상의 자원의 위치를 의미한다. URI는 Uniform Resource Identifier로 인터넷 상의 자원을 식별하기 위한 문자열의 구성이다. REST의 구성요소 자원(Resource) -URI 자원에는 고유한 ID가 존재하고, 이 자원은 Serve에 존재한다. 자원을 구별하는 ID는 ‘/exgroups/:exgroup_id’와 같은 HTTP URI 이다. Client는 URI를 이용해 자원을 지정하고 해당자원의 상태에 대해 Server에 요청한다. 행위(Verb) - Method ```html HTTP 프로토콜의 Method를 사용 HTTP 프로토콜은 GET, POST, PUT, PATCH, DELETE의 Method를 제공한다. (CRUD) GET - Read : 정보 요청 POIST - Create : 정보 입력 PUT - Update : 정보 업데이트 (데이터 전체를 변경) PATCH - Update : 정보 업데이트 (데이터 일부만 변경) DELETE - Delete : 정보 삭제 ``` 표현 (Representation of Resource) Client의 Server가 데이터를 주고 받는 형태로 JSON, XML, TEXT, RSS 등이 있다. JSON, XML를 통해 데이터를 주고 받는것이 일반적 REST API란? API(Application Programming Interface)란? API는 응용 프로그램에서 사용할 수 있도록 , 운영체제나 프로그래밍 언어가 제공하는 기능을 제어할 수 있도록 만든 인터페이스 이다. REST API의 정의 REST의 특징을 기반으로 서비스 API를 구현 REST API 와 RESTful API의 차이점 RESTful은 REST의 설계 규칙을 잘 지켜서 설계된 API를 RESTful한 API라고 한다. 즉, REST의 원리를 잘 따르는 시스템을 RESTful이란 용어로 지칭</summary></entry><entry><title type="html">📚 Educations</title><link href="https://memories109.github.io/profile//about/educations/2021-11-23-education-aboutme.html/" rel="alternate" type="text/html" title="📚 Educations" /><published>2021-11-23T00:00:00+00:00</published><updated>2021-11-24T07:21:00+00:00</updated><id>https://memories109.github.io/profile//about/educations/education-aboutme</id><content type="html" xml:base="https://memories109.github.io/profile//about/educations/2021-11-23-education-aboutme.html/">&lt;h2 id=&quot;리눅스-서버-관리&quot;&gt;리눅스 서버 관리&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;임베디드리눅스교육센터&lt;/li&gt;
+  &lt;li&gt;리눅스 기초에서 부터 서버 설치까지 교육 과정을 수료&lt;/li&gt;
+  &lt;li&gt;실무에 적용 되는 리눅스 서버에 대해서 중점 교육&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.inflearn.com/courses/it-programming&quot;&gt;#linuxServer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;이공계-전문-기술-연수사업&quot;&gt;이공계 전문 기술 연수사업&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Kh 정보교육원&lt;/li&gt;
+  &lt;li&gt;훈련과정 : Java Hybride Web-App 개발자 양성 과정&lt;/li&gt;
+  &lt;li&gt;교육내용 : Java, Android, Jquery, Jsp, Spring, XML, HTML&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.keduit.com/?gclid=CjwKCAiAv_KMBhAzEiwAs-rX1DSozMyYyeK1drAI8qimlamHdfCTnyFSypg1DIICaXeQN_cv3LHoSxoCLOEQAvD_BwE&quot;&gt;#keduit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="About" /><category term="Educations" /><category term="springboot" /><category term="webrtc" /><category term="jwt" /><category term="redis" /><category term="docker" /><category term="nginx" /><category term="mysql" /><summary type="html">리눅스 서버 관리 임베디드리눅스교육센터 리눅스 기초에서 부터 서버 설치까지 교육 과정을 수료 실무에 적용 되는 리눅스 서버에 대해서 중점 교육 #linuxServer 이공계 전문 기술 연수사업 Kh 정보교육원 훈련과정 : Java Hybride Web-App 개발자 양성 과정 교육내용 : Java, Android, Jquery, Jsp, Spring, XML, HTML #keduit</summary></entry><entry><title type="html">About Me</title><link href="https://memories109.github.io/profile//about/jekyll/2021-11-23-answer-aboutme.html/" rel="alternate" type="text/html" title="About Me" /><published>2021-11-23T00:00:00+00:00</published><updated>2021-11-24T05:21:00+00:00</updated><id>https://memories109.github.io/profile//about/jekyll/answer-aboutme</id><content type="html" xml:base="https://memories109.github.io/profile//about/jekyll/2021-11-23-answer-aboutme.html/">&lt;p&gt;&lt;a href=&quot;https://travis-ci.org/joemccann/dillinger&quot;&gt;&lt;img src=&quot;https://travis-ci.org/joemccann/dillinger.svg?branch=master&quot; alt=&quot;Build Status&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;-introduction&quot;&gt;🤔 &lt;em&gt;Introduction&lt;/em&gt;&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;안녕하세요 !! 프론트 엔드 개발자 Ghosts 입니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;contact--channel&quot;&gt;Contact &amp;amp; Channel&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Email : memories109@gmail.com&lt;/li&gt;
+  &lt;li&gt;Github : https://github.com/memories109&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;skill&quot;&gt;&lt;em&gt;Skill&lt;/em&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;backend&quot;&gt;BackEnd&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Java, PHP&lt;/li&gt;
+  &lt;li&gt;Spring Boot, Spring MVC, Spring Batch, Spring Data JPA&lt;/li&gt;
+  &lt;li&gt;Rest API, Hibernate&lt;/li&gt;
+  &lt;li&gt;Eclipse, Visual Studio Code
+    &lt;h2 id=&quot;devops&quot;&gt;DevOps&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;MySQL, MariaDB, Oracle, MongoDB&lt;/li&gt;
+  &lt;li&gt;Jenkins, TravisCI&lt;/li&gt;
+  &lt;li&gt;Nginx, Tomcat&lt;/li&gt;
+  &lt;li&gt;Github&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;frontend&quot;&gt;FrontEnd&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTML5&lt;/li&gt;
+  &lt;li&gt;CSS3(SCSS)&lt;/li&gt;
+  &lt;li&gt;Jquery&lt;/li&gt;
+  &lt;li&gt;npm&lt;/li&gt;
+  &lt;li&gt;Jekyll, WordPress
+    &lt;h2 id=&quot;collaboration&quot;&gt;Collaboration&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RedMine &amp;amp; Wiki Confluence&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="About" /><category term="Jekyll" /><category term="about" /><summary type="html">🤔 Introduction 안녕하세요 !! 프론트 엔드 개발자 Ghosts 입니다. Contact &amp;amp; Channel Email : memories109@gmail.com Github : https://github.com/memories109 Skill BackEnd Java, PHP Spring Boot, Spring MVC, Spring Batch, Spring Data JPA Rest API, Hibernate Eclipse, Visual Studio Code DevOps MySQL, MariaDB, Oracle, MongoDB Jenkins, TravisCI Nginx, Tomcat Github FrontEnd HTML5 CSS3(SCSS) Jquery npm Jekyll, WordPress Collaboration RedMine &amp;amp; Wiki Confluence</summary></entry><entry><title type="html">Who</title><link href="https://memories109.github.io/profile//aboutme/2021-11-23-aboutme-first.html/" rel="alternate" type="text/html" title="Who" /><published>2021-11-23T00:00:00+00:00</published><updated>2021-11-26T00:51:26+00:00</updated><id>https://memories109.github.io/profile//aboutme/aboutme-first</id><content type="html" xml:base="https://memories109.github.io/profile//aboutme/2021-11-23-aboutme-first.html/"></content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="aboutme" /><category term="aboutme" /><summary type="html"></summary></entry><entry><title type="html">GitHub Action 자동화 배포</title><link href="https://memories109.github.io/profile//blog/git/2021-11-23-github_action-blog.html/" rel="alternate" type="text/html" title="GitHub Action 자동화 배포" /><published>2021-11-23T00:00:00+00:00</published><updated>2021-11-26T00:51:26+00:00</updated><id>https://memories109.github.io/profile//blog/git/github_action-blog</id><content type="html" xml:base="https://memories109.github.io/profile//blog/git/2021-11-23-github_action-blog.html/">&lt;p&gt;이전 문서화 작업중에서 TravisCi에 대해서 언급한적이 있다
+개발도중 만나게된 응답 오류, 빌드 시간, 커스텀 어려움 복잡도 기타등등 …..
+그런 문제로 찾아본 결과 GitHub Action을 검토 하였으며 
+속도측면이나 기존 GitHub 관리하는 입장에서 AccessTokene등록후 간단한 Workflows작성시 Git Push 이후에 자동 배포가 무척간편해 졌다&lt;/p&gt;
+
+&lt;h2 id=&quot;github-action-설정방법&quot;&gt;GitHub Action 설정방법&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;기본 설정 방법
+&lt;img src=&quot;/assets/img/customer/gitaction.png&quot; alt=&quot;gitAction&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Github Action의 메뉴 구성들이다. Jekyll Workflow를 사용하기 설치 해준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/customer/gitaction2.png&quot; alt=&quot;gitAction&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;코드 
+&lt;img src=&quot;/assets/img/customer/blog4.png&quot; alt=&quot;gitAction&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;빌드 과정&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="Blog" /><category term="Git" /><category term="springboot" /><category term="webrtc" /><category term="jwt" /><category term="redis" /><category term="docker" /><category term="nginx" /><category term="mysql" /><summary type="html">이전 문서화 작업중에서 TravisCi에 대해서 언급한적이 있다 개발도중 만나게된 응답 오류, 빌드 시간, 커스텀 어려움 복잡도 기타등등 ….. 그런 문제로 찾아본 결과 GitHub Action을 검토 하였으며 속도측면이나 기존 GitHub 관리하는 입장에서 AccessTokene등록후 간단한 Workflows작성시 Git Push 이후에 자동 배포가 무척간편해 졌다 GitHub Action 설정방법 기본 설정 방법 Github Action의 메뉴 구성들이다. Jekyll Workflow를 사용하기 설치 해준다. 코드 빌드 과정</summary></entry><entry><title type="html">Project</title><link href="https://memories109.github.io/profile//project/2021-11-23-chep01-project.html/" rel="alternate" type="text/html" title="Project" /><published>2021-11-23T00:00:00+00:00</published><updated>2021-11-26T00:51:26+00:00</updated><id>https://memories109.github.io/profile//project/chep01-project</id><content type="html" xml:base="https://memories109.github.io/profile//project/2021-11-23-chep01-project.html/"></content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="Project" /><category term="wpf" /><summary type="html"></summary></entry><entry><title type="html">Travis CI</title><link href="https://memories109.github.io/profile//blog/travisci/2021-11-22-travisci-blog.html/" rel="alternate" type="text/html" title="Travis CI" /><published>2021-11-22T00:00:00+00:00</published><updated>2021-11-23T06:21:00+00:00</updated><id>https://memories109.github.io/profile//blog/travisci/travisci-blog</id><content type="html" xml:base="https://memories109.github.io/profile//blog/travisci/2021-11-22-travisci-blog.html/">&lt;p&gt;Travis CI는 배포 자동화 툴입니다. 유명한 Jenkis와 비교하시면 됩니다. 
+&lt;a href=&quot;https://travis-ci.org/&quot;&gt;#travis-ci&lt;/a&gt;&lt;/p&gt;</content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="Blog" /><category term="TravisCI" /><category term="Blog" /><summary type="html">Travis CI는 배포 자동화 툴입니다. 유명한 Jenkis와 비교하시면 됩니다. #travis-ci</summary></entry><entry><title type="html">Blog - github.io 포트폴리오 제작하기</title><link href="https://memories109.github.io/profile//blog/text/2021-11-21-tutorial-blog.html/" rel="alternate" type="text/html" title="Blog - github.io 포트폴리오 제작하기" /><published>2021-11-21T00:00:00+00:00</published><updated>2021-11-22T13:06:00+00:00</updated><id>https://memories109.github.io/profile//blog/text/tutorial-blog</id><content type="html" xml:base="https://memories109.github.io/profile//blog/text/2021-11-21-tutorial-blog.html/">&lt;p&gt;포트폴리오는 제작하기에 어떤 방법이 있을지 고민을 많이 하였다.
+여러 참고 사이트 무료 홈페이지 제작 사이트등 이런저런 꼼수도 여러곳 보았다.&lt;/p&gt;
+
+&lt;p&gt;개발자라면 그래도 자신이 만든 포트폴리오가 필요해 보였다.
+그래서 GitHub Page를 이용한 나만의 포트폴리오를 만들려고 한다.&lt;/p&gt;</content><author><name>&lt;Kwak&gt; &lt;KyungJin&gt;</name><email>&lt;memories109@gmail.com&gt;</email></author><category term="Blog" /><category term="Text" /><category term="Blog" /><summary type="html">포트폴리오는 제작하기에 어떤 방법이 있을지 고민을 많이 하였다. 여러 참고 사이트 무료 홈페이지 제작 사이트등 이런저런 꼼수도 여러곳 보았다. 개발자라면 그래도 자신이 만든 포트폴리오가 필요해 보였다. 그래서 GitHub Page를 이용한 나만의 포트폴리오를 만들려고 한다.</summary></entry></feed>
